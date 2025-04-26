@@ -1,0 +1,644 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-image: url(assets/bg-1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover; 
+    color: #fff;
+    font-family: sans-serif;
+    padding: 20px;
+  }
+  
+  .carousel {
+    max-width: 90%;
+    margin: auto;
+    position: relative;
+  }
+
+  .slides {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+  .slide {
+    width: 100%;
+    display: none;
+    position: relative;
+  }
+
+ 
+  .poster {
+    width: 100%;
+    height: auto;
+    min-height: 300px;
+    max-height: 600px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .caption {
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+    background: rgba(33, 31, 25, 0.7);
+    padding: 1em;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;              
+    max-width: 400px;
+    height: auto;
+  }
+
+  .caption h2 {
+    color: #a8f1a4;
+    font-size: 2.5rem;
+  }
+
+  .caption p {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #94e7f2;
+  }
+
+  .trailer {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    width: 25vw;              
+    max-width: 500px;         
+    min-width: 150px;         
+    
+    border-radius: 100px;
+    box-shadow: 0 0 20px #49ed3a;
+    transition: transform 0.3s ease;
+    z-index: 2;
+  }
+
+
+  .trailer:hover {
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 768px) {
+    .trailer {
+      width: 40vw;
+      bottom: 10px;
+      right: 10px;
+    }
+
+    .caption {
+      bottom: 10px;
+      left: 10px;
+      padding: 10px;
+    }
+
+    .caption h2 {
+      font-size: 1.2rem;
+    }
+
+    .caption p {
+      font-size: 0.9rem;
+    }
+
+    .poster {
+        height: 300px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .trailer {
+      display: none;
+    }
+
+    .caption {
+      position: absolute;
+      width: 60%;
+      max-width: 300px;;
+      height: auto;
+      display: block;
+      bottom: 10px;
+      left: 10px;
+      padding: 10px;
+    }
+
+    .caption h2 {
+      font-size: 1.1rem;
+    }
+
+    .caption p {
+      font-size: 0.7rem;
+    }
+
+    .poster {
+        display: flex;
+        flex-direction: column;
+        height: 300px;
+    }
+  }
+
+
+  
+.slides .slide {
+  display: none;
+  position: relative;
+}
+.slides .slide.active {
+  display: block;
+}
+
+
+.nav-button {
+  position: absolute;
+  top: 50%;
+  width: 50px;
+  height: 50px;
+  transform: translateY(-50%);
+  background: rgba(20, 20, 20, 0.6);
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  z-index: 3;
+  border-radius: 50%;
+}
+
+.nav-button.prev {
+  left: 10px;
+}
+.nav-button.next {
+  right: 10px;
+}
+
+  .nav-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+
+  #mainNav {
+    width: 90%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    padding: 10px 0;
+    margin-left: auto;
+    margin-right: auto;
+    border: #94e7f2 solid 1px;
+    border-radius: 20px;
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    position: relative;
+  }
+
+  .menuicon {
+    display: none; 
+    width: 30px; 
+    height: auto;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  #navLinks {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; 
+    gap: 20px; 
+  }
+
+  #navLinks li {
+    display: inline-block; 
+  }
+
+  #navLinks a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 1cm;
+    transition: background-color 0.3s;
+  }
+
+  #navLinks a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+ 
+  @media (max-width: 599px) {
+    #mainNav {
+      justify-content: center; 
+      padding: 10px 20px;
+      position: relative; 
+      z-index: 1001;
+    }
+
+    .menuicon {
+      display: block;
+      position: absolute;
+      left: 50%;
+      right: auto;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1002; /* 保证icon在最上层 */
+    }
+
+    #navLinks {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.8);
+      width: 180px;
+      padding: 10px;
+      border-radius: 0 0 5px 5px;
+      gap: 5px;
+      z-index: 10; 
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      transition: opacity 0.3s;
+    }
+
+    #navLinks.show {
+      display: flex;
+      opacity: 1;
+    }
+
+    #navLinks li {
+      display: block;
+      text-align: center;
+    }
+  }
+
+
+.ShopContainer{
+  border-radius: 10px;
+  max-width: 95%;
+  height: 700px;
+  overflow-y: auto;
+  margin: auto;
+  position: relative;
+  background-color: #ffffff;
+}
+
+  #product-list {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    color: #000;
+    font-family: 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+}
+  
+ #cart-view{
+  color: #000;
+ }
+
+ #totalPrice{
+  text-align: center;
+  color: #5fdba9;
+  margin: 10px 0;
+ }
+
+ #cart-view button{
+  display: block;
+  background-color: #3e4161;
+  color: #5fdba9;
+  border: none;
+  margin: auto;
+  padding: 10px 20px;
+  border-radius: 5px;
+ }
+
+.product-card{
+  display: block;
+  margin: auto;
+  border: #3e4161 solid 1px;
+  border-radius: 10px;
+  height: 350px;
+  width: 350px;
+}
+
+#product-list img{
+  display: block;
+  margin: auto;
+  border-radius: 10px;
+}
+
+#product-list h3,
+#product-list p {
+  text-align: center;
+  margin: 10px 0;
+}
+
+#product-list button {
+  display: block;
+  background-color: #6d73b2;
+  color: #5fdba9;
+  border: none;
+  margin: auto;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+#product-list button:hover {
+  background-color: #8b8f98;
+}
+
+/* 搜索框美化 */
+#search {
+  width: 60%;
+  max-width: 400px;
+  margin: 20px auto 30px auto;
+  display: block;
+  padding: 12px 20px;
+  border: 2px solid #6d73b2;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  color: #333;
+  box-shadow: 0 2px 12px rgba(100, 200, 255, 0.12);
+  outline: none;
+}
+
+#search:focus {
+  border-color: #42d470;
+  box-shadow: 0 0 0 3px #a8f1a4aa;
+  background:#8b8f98;
+}
+
+#checkout{
+  display: block;
+  margin: 20px auto;
+  width: 200px;
+  height: 50px;
+  background:#6ae95e;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 30px;
+}
+  
+
+  .containerRegistration{
+    max-width: 90%;
+    margin: auto;
+    border-radius: 1cm;
+    position: relative;
+    background-image: url(assets/bg-4.jpg);
+    background-repeat:no-repeat;
+    background-size: cover; 
+}
+
+#registration {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    border: #3e4161 solid 1px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  }
+  
+  #registrationform {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #registrationform label {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  #registrationform input,
+  #registrationform select,
+  #registrationform textarea {
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+    margin-bottom: 10px;
+  }
+  
+  #registrationform input[type="radio"] {
+    width: auto;
+  }
+
+
+  .gender-options {
+    display: flex;
+    align-items: center; 
+    gap: 20px; 
+    margin-bottom: 10px; 
+    margin-top: 5px; 
+  }
+
+
+  .gender-options span {
+    display: flex;
+    align-items: center; 
+  }
+
+
+  #registrationform .gender-options input[type="radio"] {
+    margin: 0 5px 0 0; 
+    width: auto;
+    vertical-align: middle; 
+  }
+
+ 
+  #registrationform .gender-options label {
+    margin: 0; 
+    font-weight: normal; 
+    color: #ffffff; 
+    margin-top: 0; 
+    margin-bottom: 0;
+  }
+
+
+  #registrationform .error {
+    color: #ffaaaa;
+    font-size: 0.9em;
+    margin-top: -8px;
+    margin-bottom: 10px;
+  }
+  
+  #registrationform button[type="submit"] {
+    background-color: #ffffff;
+    color: #3e4161;
+    font-weight: bold;
+    padding: 12px;
+    margin-top: 20px;
+    border-radius: 12px;
+    transition: 0.3s;
+    border: none;
+  }
+  
+  #registrationform button[type="submit"]:hover {
+    background-color: #ddd;
+  }
+
+
+
+#billform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#billform label {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #3e4161;
+  letter-spacing: 1px;
+}
+
+#billform .error {
+  color: #ff0000;
+  font-size: 0.9em;
+  margin-top: -8px;
+  margin-bottom: 10px;
+}
+
+#billform input,
+#billform select {
+  padding: 10px;
+  border: 1px solid #42d470;
+  border-radius: 10px;
+  font-size: 16px;
+  outline: none;
+  margin-bottom: 10px;
+}
+
+#billform button[type="submit"] {
+  background:#6ae95e;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 36px;
+  margin-top: 18px;
+  box-shadow: 0 2px 8px #42d47055;
+}
+
+#billform button[type="submit"]:hover {
+  background-color: #ddd;
+}
+
+
+.success-message {
+text-align: center;
+position: relative;
+margin: 60px auto 0 auto;
+min-width: 260px;
+border-radius: 28px;
+padding: 48px 32px 36px 32px;
+text-align: center;
+color: #3e4161;
+font-family: 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+}
+
+#success-text {
+  font-size: 1.5em;
+  margin-bottom: 32px;
+  color: #3e4161;
+  font-weight: bold;
+  position: relative;
+}
+
+#backToShoppingBtn {
+  background:#6ae95e;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 36px;
+  margin-top: 18px;
+  box-shadow: 0 2px 8px #42d47055;
+}
+
+#backToShoppingBtn:hover {
+  background-color: #3e4161;
+}
+
+
+/* 购物车界面美化 */
+#cart-view {
+  border-radius: 18px;
+  padding: 32px 24px 24px 24px;
+  margin: 30px auto 0 auto;
+  max-width: 420px;
+  min-width: 260px;
+  min-height: 220px;
+  position: relative;
+  border: 2px solid #a8f1a4;
+}
+
+#cart-view h2 {
+  color: #3e4161;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 18px;
+  letter-spacing: 2px;
+  font-family: 'Microsoft YaHei', Arial, sans-serif;
+  font-weight: bold;
+}
+
+#cartItems {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px 0;
+}
+
+#cartItems li {
+  background: #fff;
+  margin: 10px 0;
+  padding: 12px 18px;
+  border-radius: 12px;
+  color: #3e4161;
+  font-size: 1.1rem;
+  box-shadow: 0 1px 6px #a8f1a455;
+}
+
+#cartItems li:hover {
+  background:#ffe372;
+}
+
+#cart-view button#Confirm {
+  background:#6ae95e;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 36px;
+  margin-top: 18px;
+}
+
+#cart-view button#Confirm:hover {
+  background: #42d470;
+}
+.hidden {
+  display: none !important;
+}
+

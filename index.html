@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Studio Ghibli Carousel</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="carousel" id="carousel">
+
+    <div class="slides" id="slides">
+
+      <div class="slide card">
+        <img class="poster" src="assets/howlscastle.jpg" alt="Movie 1">
+        <div class="caption">
+          <h2>How's Moving Castle</h2>
+          <p>Family is what you make of it</p>
+        </div>
+        <video class="trailer" src="assets/howl-trailer.mp4" controls autoplay muted loop></video>
+      </div>
+
+      <div class="slide card">
+        <img class="poster" src="assets/spiritedaway.jpg" alt="Movie 2">
+        <div class="caption">
+          <h2>Spirited Away</h2>
+          <p>A journey to the spirit world.</p>
+        </div>
+        <video class="trailer" src="assets/spirited-away-trailer.mp4" controls autoplay muted loop> </video>
+      </div>
+
+      <div class="slide card">
+        <img class="poster" src="assets/kiki.webp" alt="Movie 2">
+        <div class="caption">
+          <h2>Kiki's Delivery Service</h2>
+          <p>Growing up can be magical</p>
+        </div>
+        <video class="trailer" src="assets/kiki-trailer.mp4" controls autoplay muted loop></video>
+      </div>
+
+      <div class="slide card">
+        <img class="poster" src="assets/totoro.jpg" alt="Movie 2">
+        <div class="caption">
+          <h2>My Neighbor Totoro</h2>
+          <p>Imagination. Joy. Resilience</p>
+        </div>
+        <video class="trailer" src="assets/totoro-trailer.mp4" controls autoplay muted loop></video>
+      </div>
+
+      <div class="slide card">
+        <img class="poster" src="assets/arrietty.webp" alt="Movie 2">
+        <div class="caption">
+          <h2>Arrietty</h2>
+          <p>A "little" girl's BIG life</p>
+        </div>
+        <video class="trailer" src="assets/arrietty-trailer.mp4" controls autoplay muted loop></video>
+      </div>
+       
+    </div>
+  
+    
+    <button class="nav-button prev" id="prev">&#10094;</button>
+    <button class="nav-button next" id="next">&#10095;</button>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav id="mainNav">
+    <div>
+      <img src="assets/menu-icon.png" alt="Menu Icon" id="menuToggle" class="menuicon">
+    </div>
+    <ul id="navLinks">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Gallery</a></li>
+      <li><a href="#">Events</a></li>
+      <li><a href="#">Tickets</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+<div class="ShopContainer">
+<section id="product-container">
+  <input type="text" id="search" placeholder="Search...">
+  <section id="product-list"></section>
+</section>
+<section id="cart-view" class="hidden">
+  <h2>Your Chart</h2>
+  <ul id="cartItems"></ul>
+  <h3 id="totalPrice"></h3>
+  <button id="Confirm"><strong>Confirm</strong></button>
+</section>
+
+<!-- bill -->
+<section id="bill-view" class="hidden">
+  <section id="bill-section">
+    <form id="billform">
+      <label for="bill-name">Name:</label>
+      <input type="text" id="bill-name" required>
+      <span class="error" id="billNameError"></span>
+
+      <label for="bill-address">Address:</label>
+      <input type="text" id="bill-address" required>
+      <span class="error" id="billAddressError"></span>
+
+      <label for="bill-email">Email:</label>
+      <input type="email" id="bill-email" required>
+      <span class="error" id="billEmailError"></span>
+
+      <label for="bill-payment">Payment Method:</label>
+      <select id="bill-payment" required>
+        <option value="">Select</option>
+        <option value="credit">Credit Card</option>
+        <option value="debit">Debit Card</option>
+        <option value="paypal">PayPal</option>
+      </select>
+      <span class="error" id="billPaymentError"></span>
+
+      <label for="bill-card">Card Number:</label>
+      <input type="text" id="bill-card" maxlength="19" required>
+      <span class="error" id="billCardError"></span>
+
+      <label for="bill-cvv">CVV:</label>
+      <input type="text" id="bill-cvv" maxlength="4" required>
+      <span class="error" id="billCVVError"></span>
+
+      <button type="submit" id="Mysubmit">Pay Confirm</button>
+    </form>
+  </section>
+</section>
+
+<!-- success -->
+<section id="success-view" class="hidden">
+  <div class="success-message">
+    <div id="success-text"></div>
+    <button id="backToShoppingBtn"><strong>back to shopping</strong></button>
+  </div>
+</section>
+</div>
+
+<div>
+<button id="checkout" class="hidden"><strong>Checkout</strong></button>
+</div>
+
+
+
+  <!-- Registration Form -->
+<div class="containerRegistration">
+  <section id="registration">
+    <form id="registrationform">
+      <label for="date-of-visit">Date of Visit:</label>
+      <input type="date" id="date-of-visit" required>
+      <span class="error" id="visitDateError"></span>
+
+      <label for="no-of-visitors">Number of Visitors:</label>
+      <select id="no-of-visitors" required>
+        <option value="">Select</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3+</option>
+      </select>
+      <span class="error" id="visitorsError"></span>
+
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" required>
+      <span class="error" id="nameError"></span>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+      <span class="error" id="emailError"></span>
+
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" required>
+      <span class="error" id="dobError"></span>
+
+      <label>Gender:</label>
+      <div class="gender-options">
+        <span>
+          <input type="radio" id="male" name="gender" value="male" required checked>
+          <label for="male">Male</label>
+        </span>
+        <span>
+          <input type="radio" id="female" name="gender" required value="female">
+          <label for="female">Female</label>
+        </span>
+      </div>
+      <span class="error" id="genderError"></span>
+
+      <label for="ticket">Ticket Type:</label>
+      <select id="ticket" required>
+        <option value="">Select</option>
+        <option value="standard">Standard</option>
+        <option value="vip">VIP</option>
+        <option value="student">Student</option>
+      </select>
+      <span class="error" id="ticketError"></span>
+
+      <label for="comments">Comments:</label>
+      <textarea id="comments" rows="4" cols="50"></textarea>
+
+      <button type="submit">Register</button>
+    </form>
+  </section>
+</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
