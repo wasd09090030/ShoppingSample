@@ -322,7 +322,7 @@ document.getElementById("billform").addEventListener("submit", function(event) {
 function showSuccessView(userName, userAddress) {
   hideSection('bill-view');
   showSection('success-view');
-  // 重新计算总价
+  // calculate total price
   const total = cart.reduce((sum, product) => sum + product.price, 0);
   document.getElementById('success-text').innerHTML =
     `Thank you, ${userName}，<br>You have bought items totaling $${total}.<br>They will be delivered to<br>${userAddress}<br>in 3~4 days.`;
